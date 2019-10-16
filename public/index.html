@@ -1,0 +1,95 @@
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cognito ログイン画面</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css"> 
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css'>
+    <link rel='stylesheet' href='mycss.css'>
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script src="/lib/amazon-cognito-identity.min.js"></script>
+    <script src="/lib/sha.js"></script>
+    <script src='/app.js'></script>
+</head>
+
+<body>
+    <div id="header" class="nav-area fixed-top disable-user-select u-full-width">
+        <div class="row">
+            <ul class="horizontal-list hover-links six columns">
+                <li><a class="large-text" href="#">Cognito ログイン画面</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="contents" class="container">
+    </div>
+    <div id="footer" class="nav-area u-full-width">
+        <ul class="horizontal-list hover-links">
+            <li>Copyright (c) 2019 MORI soft All Rights Reserved.</li>
+        </ul>
+    </div>
+
+    <!-- 以下、テンプレート -->
+    <div id="templates">
+        <div class="landing-view">
+            <h2 class="contents-title">Cognito でユーザー認証を行います</h2>
+            <div>
+                <ul class="horizontal-list six columns">
+                    <li><a href="#login" class="button button-primary">ログイン</a></li>
+                </ul>        
+            </div>
+        </div>
+        <div class="login-view">
+            <form class="login">
+                <h2 class="large-text">ログイン</h2>
+                <div class="message no-display"></div>
+                <label for="inputUserName">ユーザー名（メールアドレス）</label>
+                <input type="text" class="inputUserName" placeholder="User Name" required autofocus></input>
+                <label for="intpuPassword">パスワード</label>
+                <input type="password" class="inputPassword" placeholder="Password" required></input>
+                <br/>
+                <input type="button" class="loginButton button-primary" value="ログイン"></input>
+            </form>
+            <div>
+                <a href='#reset'>パスワード忘れた？</a>
+            </div>
+        </div>
+        <div class="new-password-challenge-view">
+            <form class="new-password-challenge">
+                <h2 class="large-text">新しいパスワードを入力してください</h2>
+                <div>
+                    <p>仮パスワードと異なる新しいパスワードを入力してください。</p>
+                </div>
+                <div class="message no-display"></div>
+                <label for="intpuPassword">新パスワード</label>
+                <input type="password" class="inputNewPassword" placeholder="NewPassword" required autofocus></input>
+                <label for="intpuPassword">新パスワードの確認</label>
+                <input type="password" class="inputNewPasswordConfirm" placeholder="NewPasswordConfirm" required></input>
+                <br/>
+                <input type="button" class="challengeButton button-primary" value="更新"></input>
+            </form>
+        </div>
+        <div class="password-reset-view">
+            <form class="password-reset">
+                <h2 class="large-text">パスワードを忘れた？</h2>
+                <div>
+                    <p>ユーザー名を入力すると登録済みのメールアドレスにパスワードリセット用のコードを送信します。</p>
+                </div>
+                <div class="message no-display"></div>
+                <label for="inputUserName">ユーザー名</label>
+                <input type="text" class="inputUserName" placeholder="User Name" required autofocus></input>
+                <br/>
+                <input type="button" class="resetButton button-primary" value="リセット"></input>
+            </form>
+        </div>
+    </div>
+    <script type='text/javascript'>
+        $(window).ready(lineln.startApp);
+    </script>
+</body>
+
+</html>

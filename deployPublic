@@ -1,0 +1,38 @@
+#!/bin/bash
+#
+# deploy app files in public folder to S3 bucket.
+#
+# 2019/10/16, Junichi MORI
+
+PUBLIC_DIR="./public"
+BUCKET="s3://S3バケット名"
+
+function usage {
+    echo "Usage: deployPublic [-d] [-h] aws_profile_name"
+    echo "  -d: drun run"
+    echo "  -h: show this message"
+}
+
+# processing options
+DRYRUN=
+while getopts dh ARG
+do
+    case $ARG in
+      "d") DRYRUN='--dryrun' ;;
+      "h" | * ) usage
+                exit 1 ;;
+    esac
+done
+shift $((OPTIND -1))
+
+if [ $# -ne 1 ]
+then
+    usage
+    exit 1
+fi
+AWS_PROFILE=$1
+
+# sync local folder to s3 bucket
+echo aws --profile $AWS_PROFILE s3 sync ${PUBLIC_DIR} ${BUCKET} --exclude "*" --include "*.html" --include "*.js" --include "*.css" --delete ${DRYRUN}
+aws --profile $AWS_PROFILE s3 sync ${PUBLIC_DIR} ${BUCKET} --exclude "*" --include "*.html" --include "*.js" --include "*.css" --delete ${DRYRUN}
+

@@ -1,0 +1,57 @@
+/*
+ * local css
+ *
+ * 2017/10/4, Junichi MORI
+ */
+
+body {
+    margin-top: 51px; /* ヘッダ固定のため必要, ヘッダ高さに合わせておく */
+}
+#templates {
+    display: none;
+}
+
+.nav-area {
+    padding-left: 40px;
+    background-color: #f8f8ff;
+    z-index: 1024;
+}
+
+.fixed-top {
+    position: fixed;
+    top: 0px;
+}
+
+.disable-user-select {
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+}
+
+.horizontal-list {
+    margin-bottom: 0px;
+}
+.horizontal-list li {
+    display: inline;
+    margin: 0 20px 0 0;
+}
+
+.hover-links a {
+    text-decoration: none;
+}
+.hover-links a:hover {
+    text-decoration: underline;
+}
+
+.clear-float {
+    clear: both;
+}
+
+.large-text {
+    font-size: 32px;
+}
+
+.no-display {
+    display: none;
+}

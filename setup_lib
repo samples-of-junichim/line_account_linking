@@ -1,0 +1,52 @@
+#!/bin/bash
+#
+# cognito ユーザープール用ライブラリをセットアップするためのスクリプト
+#
+# ライブラリの場所
+# https://github.com/aws/aws-amplify
+# 旧版 https://github.com/aws/amazon-cognito-identity-js
+#
+# 2017/10/3,  Junichi MORI
+# 2018/7/6,   Amplify 統合版へ対応, Junichi MORI
+# 2019/10/11, npm によるインストールに対応, Junichi MORI
+
+set -eu
+
+PREPARE_DIR=lib_prepare
+LIB_DIR=public/lib
+
+### Cognito SSDK
+
+SDK_NAME=amazon-cognito-identity
+SDK_PACKAGE=${SDK_NAME}-js
+SDK_FILE=${SDK_NAME}.min.js
+
+# SDKファイルの取得
+mkdir -p ${PREPARE_DIR}
+
+cd ${PREPARE_DIR}
+npm install ${SDK_PACKAGE}
+cd ..
+
+# SDKファイルのコピー
+
+mkdir -p ${LIB_DIR}
+cp -p ${PREPARE_DIR}/node_modules/${SDK_PACKAGE}/dist/${SDK_FILE}  ${LIB_DIR}
+
+### jsSHA
+
+PKG_JSSHA=jssha
+
+cd ${PREPARE_DIR}
+npm install ${PKG_JSSHA}
+cd ..
+
+# ファイルのコピー
+
+cp -p ${PREPARE_DIR}/node_modules/${PKG_JSSHA}/src/sha.js  ${LIB_DIR}
+
+
+### 後始末
+
+#rm -rf ${PREPARE_DIR}
+
